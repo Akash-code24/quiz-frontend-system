@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { quizzes as DUMMY } from "../data/quizzes";
 
@@ -6,15 +6,17 @@ export default function Home() {
   const [quizList, setQuizList] = useState([]);
 
   useEffect(() => {
-    // Check if admin has created quizzes
     const stored = localStorage.getItem("quizzes");
+    const adminQuizzes = stored ? JSON.parse(stored) : [];
 
-    if (stored) {
-      setQuizList(JSON.parse(stored));
-    } else {
-      // fallback to dummy quizzes
-      setQuizList(DUMMY);
-    }
+    // MERGE ADMIN + DUMMY
+    // If admin quiz has same id, keep admin version
+    const merged = [
+      ...DUMMY.filter(d => !adminQuizzes.find(a => a.id === d.id)),
+      ...adminQuizzes
+    ];
+
+    setQuizList(merged);
   }, []);
 
   return (
@@ -25,9 +27,7 @@ export default function Home() {
         <Link key={q.id} to={`/quiz/${q.id}`}>
           <div className="p-4 border rounded hover:bg-gray-100 cursor-pointer">
             <h2 className="text-lg font-semibold">{q.title}</h2>
-            <p className="text-sm text-gray-600">
-              {q.questions.length} questions
-            </p>
+            <p className="text-sm text-gray-600">{q.questions.length} questions</p>
           </div>
         </Link>
       ))}

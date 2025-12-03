@@ -17,5 +17,24 @@ export const quizzes = [
         answer: false
       }
     ]
+  },
+   {
+    id: "2",
+    title: "General Knowledge",
+    questions: [
+      {
+        id: "q21",
+        type: "mcq",
+        prompt: "What is the capital of Uttar Pradesh?",
+        options: ["Delhi", "Mumbai", "Lucknow", "Kolkata"],
+        answer: 2
+      },
+      {
+        id: "q22",
+        type: "truefalse",
+        prompt: "Great Wall of China is visible from space?",
+        answer: true
+      }
+    ]
   }
 ];

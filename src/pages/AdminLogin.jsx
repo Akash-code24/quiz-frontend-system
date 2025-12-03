@@ -20,33 +20,33 @@ export default function AdminLogin() {
     }
   }
 
-  return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
+return (
+    <div className="p-6 max-w-md mx-auto bg-white shadow-md rounded-lg">
+        <h1 className="text-2xl font-bold mb-4 text-center text-gray-800">Admin Login</h1>
 
-      <form onSubmit={handleLogin} className="space-y-3">
-        <input
-          className="w-full p-2 border rounded"
-          placeholder="Username"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
+        <form onSubmit={handleLogin} className="space-y-4">
+            <input
+                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Username"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+            />
 
-        <input
-          className="w-full p-2 border rounded"
-          placeholder="Password"
-          type="password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
+            <input
+                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Password"
+                type="password"
+                value={pass}
+                onChange={(e) => setPass(e.target.value)}
+            />
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700"
-        >
-          Login
-        </button>
-      </form>
+            <button
+                type="submit"
+                className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700 transition duration-200"
+            >
+                Login
+            </button>
+        </form>
     </div>
-  );
+);
 }
